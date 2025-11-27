@@ -1,0 +1,405 @@
+/* css/style.css */
+
+/* --- Variáveis Globais --- */
+:root {
+    --cor-primaria: #007bff;
+    --cor-primaria-hover: #0056b3;
+    --cor-fundo: #f4f7f6;
+    --cor-container: #ffffff;
+    --cor-texto: #333;
+    --cor-borda: #dee2e6;
+    --cor-sucesso: #28a745;
+    --cor-erro: #dc3545;
+    --cor-aviso: #ffc107;
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Reset Básico e Padrões --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* --- Navegação/Cabeçalho Principal --- */
+header.app-header {
+    background-color: var(--cor-container);
+    padding: 1rem 2rem;
+    box-shadow: var(--sombra-padrao);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+header.app-header .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+header.app-header nav {
+    display: flex;
+    gap: 1rem;
+}
+
+header.app-header nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding: 0.5rem;
+    transition: color 0.2s;
+}
+
+header.app-header nav a:hover {
+    color: var(--cor-primaria);
+}
+
+header.app-header nav a#btn-logout {
+    color: var(--cor-erro);
+}
+
+/* --- Container Principal --- */
+.container {
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+    padding: 2rem;
+    background-color: var(--cor-container);
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+}
+
+/* --- NOVO: Container de Autenticação (Login/Cadastro) --- */
+/* Este container é mais estreito, como você pediu */
+.container-auth {
+    max-width: 450px; /* Largura reduzida */
+    margin: 5rem auto 2rem auto;
+    padding: 2rem;
+    background-color: var(--cor-container);
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+}
+
+/* --- Formulários --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.btn {
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primario {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+.btn-primario:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+.btn-secundario {
+    background-color: #6c757d;
+    color: white;
+}
+.btn-secundario:hover {
+    background-color: #5a6268;
+}
+
+.btn-perigo {
+    background-color: var(--cor-erro);
+    color: white;
+}
+.btn-perigo:hover {
+    background-color: #c82333;
+}
+
+/* NOVO: Botão de aviso (para editar) */
+.btn-aviso {
+    background-color: var(--cor-aviso);
+    color: #333;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+.btn-aviso:hover {
+    background-color: #e0a800;
+}
+
+/* NOVO: Botão de remover (inline) */
+.btn-remover {
+    background: none;
+    border: none;
+    color: var(--cor-erro);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+}
+
+.msg-feedback {
+    text-align: center;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+.msg-sucesso {
+    color: var(--cor-sucesso);
+    background-color: #e9f7ec;
+}
+.msg-erro {
+    color: var(--cor-erro);
+    background-color: #fdeeee;
+}
+
+/* NOVO: Link para trocar de formulário */
+.auth-toggle-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+.auth-toggle-link a {
+    color: var(--cor-primaria);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- Página: index.html (Home) --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+.card-lista {
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+    padding: 1rem;
+    transition: box-shadow 0.2s;
+    text-decoration: none;
+    color: var(--cor-texto);
+    display: block;
+}
+.card-lista:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.card-lista h4 {
+    color: var(--cor-primaria);
+}
+
+/* --- Página: criar-lista.html --- */
+/* ATUALIZADO: layout de adicionar item */
+#add-item-controls {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+}
+#itens-lista-container {
+    margin-top: 1.5rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+}
+.item-adicionado {
+    display: grid;
+    /* NOVO: Grid para alinhar botões */
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--cor-borda);
+}
+.item-adicionado:last-child {
+    border-bottom: none;
+}
+.item-adicionado .item-info {
+    font-size: 1.1rem;
+}
+.item-adicionado .item-info small {
+    display: block;
+    color: #6c757d;
+}
+/* NOVO: Campo de quantidade na pré-lista */
+.item-adicionado input[type="number"] {
+    width: 70px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+/* --- Página: lista-pronta.html --- */
+.layout-lista-pronta {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+#lista-principal {
+    flex: 2;
+}
+#mapa-lateral {
+    flex: 1;
+    position: sticky;
+    top: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+    background: var(--cor-container);
+    padding: 1rem;
+}
+#mapa-lateral h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+#mapa-lateral img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.secao-corredor {
+    margin-bottom: 1.5rem;
+    background: var(--cor-container);
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+    overflow: hidden; /* Para o h3 */
+}
+.secao-corredor h3 {
+    background-color: #e9ecef;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--cor-borda);
+}
+.item-lista {
+    padding: 0.75rem 1.5rem;
+    display: block; /* Faz o label ocupar a linha toda */
+}
+.item-lista label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.item-lista input[type="checkbox"] {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.item-lista input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .layout-lista-pronta {
+        flex-direction: column;
+    }
+    #mapa-lateral {
+        position: static;
+        width: 100%;
+    }
+    header.app-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    /* NOVO: Responsividade do "add item" */
+    #add-item-controls {
+        grid-template-columns: 1fr;
+    }
+    .item-adicionado {
+        grid-template-columns: 1fr; /* Empilha os botões */
+    }
+    .item-adicionado .item-info {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* css/style.css - Adicione no final */
+
+.checkout-area {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-top: 2px solid var(--cor-borda);
+    border-radius: 0 0 8px 8px;
+}
+
+.checkout-area h3 {
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+    font-size: 1.2rem;
+}
+
+.valor-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.valor-input-group input {
+    flex: 1;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--cor-borda);
+    border-radius: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.valor-input-group input:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+}
+
+.valor-input-group button {
+    white-space: nowrap; /* Impede o texto do botão de quebrar */
+    padding: 0.8rem 1.5rem;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 600px) {
+    .valor-input-group {
+        flex-direction: column;
+    }
+    .valor-input-group button {
+        width: 100%;
+    }
+}
